@@ -1,0 +1,497 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Amanda 💐</title>
+
+<style>
+:root {
+  --flower-color: #ff6fae;
+  --flower-center: #ffd166;
+  --bg: #fff4f7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(circle at top, #ffffff 0%, transparent 55%),
+    linear-gradient(145deg, #fff0f5, #fce4ec, #f8e8ff);
+  color: #713c54;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  padding: 25px 15px;
+}
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  background: rgba(255,255,255,.76);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 28px;
+  padding: 30px 20px;
+  box-shadow: 0 15px 55px rgba(174, 87, 125, .16);
+  position: relative;
+  overflow: hidden;
+  animation: appear 1.1s ease both;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.eyebrow {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #bd7895;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(35px, 9vw, 48px);
+  font-weight: normal;
+  color: #a3436d;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-style: italic;
+  color: #a77a8d;
+}
+
+.bouquet {
+  width: 100%;
+  max-width: 340px;
+  margin: 8px auto 0;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 12px 10px rgba(146, 76, 107, .12));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.petal {
+  fill: var(--flower-color);
+  transition: fill .35s ease;
+}
+
+.center {
+  fill: var(--flower-center);
+}
+
+.stem {
+  fill: none;
+  stroke: #668d65;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.leaf {
+  fill: #83a77b;
+}
+
+.wrap {
+  fill: #e9b8c9;
+  stroke: #d79bb2;
+  stroke-width: 2;
+}
+
+.ribbon {
+  fill: #b85b80;
+}
+
+.message {
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 5px auto 20px;
+  max-width: 340px;
+  color: #795365;
+}
+
+.message strong {
+  color: #b44d78;
+  font-weight: normal;
+}
+
+.heart {
+  color: #dc7197;
+  font-size: 23px;
+  display: inline-block;
+  animation: heartbeat 1.7s infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.12); }
+}
+
+.color-box {
+  background: #fff5f8;
+  border: 1px solid #f3d9e3;
+  border-radius: 18px;
+  padding: 15px;
+  margin: 20px auto 12px;
+}
+
+.color-box p {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #a36580;
+  margin-bottom: 12px;
+}
+
+.colors {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.color-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid white;
+  outline: 1px solid #ead1dc;
+  cursor: pointer;
+  transition: transform .2s, outline .2s;
+}
+
+.color-btn:hover {
+  transform: scale(1.15);
+}
+
+.color-btn.active {
+  outline: 2px solid #a3436d;
+  transform: scale(1.12);
+}
+
+.custom-color {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font: 13px Arial, sans-serif;
+  color: #a36580;
+}
+
+input[type="color"] {
+  width: 38px;
+  height: 32px;
+  padding: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.signature {
+  font-size: 15px;
+  font-style: italic;
+  margin-top: 22px;
+  color: #a36580;
+}
+
+.signature span {
+  display: block;
+  margin-top: 8px;
+  font-size: 24px;
+  color: #bd527e;
+}
+
+.footer {
+  font: 10px Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #c69aab;
+  margin-top: 22px;
+}
+
+.particle {
+  position: fixed;
+  top: -20px;
+  pointer-events: none;
+  z-index: -1;
+  animation: fall linear forwards;
+  opacity: .65;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .card { padding: 25px 14px; }
+  .message { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+  <p class="eyebrow">Un pequeño detalle para ti</p>
+
+  <h1>Para Amanda</h1>
+
+  <p class="subtitle">Porque mereces algo tan bonito como tú. 💗</p>
+
+  <!-- RAMO DE FLORES -->
+  <svg class="bouquet" viewBox="0 0 340 340"
+       xmlns="http://www.w3.org/2000/svg"
+       role="img" aria-label="Un ramo de flores de colores">
+
+    <!-- Tallos -->
+    <path class="stem" d="M170 255 Q135 185 83 111"/>
+    <path class="stem" d="M170 255 Q180 170 170 75"/>
+    <path class="stem" d="M170 255 Q215 180 258 112"/>
+    <path class="stem" d="M170 255 Q125 210 125 155"/>
+    <path class="stem" d="M170 255 Q225 215 220 155"/>
+    <path class="stem" d="M170 255 Q165 190 230 90"/>
+
+    <!-- Hojas -->
+    <path class="leaf" d="M139 210 Q85 190 104 160 Q143 172 139 210"/>
+    <path class="leaf" d="M195 210 Q250 185 241 158 Q202 174 195 210"/>
+    <path class="leaf" d="M157 188 Q110 165 120 140 Q159 151 157 188"/>
+    <path class="leaf" d="M193 178 Q227 145 212 123 Q180 151 193 178"/>
+
+    <!-- Flores: cada grupo tiene pétalos y centro -->
+    <g transform="translate(83 105)">
+      <g>
+        <ellipse class="petal" cy="-18" rx="12" ry="19"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(45)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(90)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(135)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(180)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(225)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(270)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(315)"/>
+        <circle class="center" r="13"/>
+      </g>
+    </g>
+
+    <g transform="translate(170 72)">
+      <g>
+        <ellipse class="petal" cy="-20" rx="13" ry="21"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(45)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(90)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(135)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(180)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(225)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(270)"/>
+        <ellipse class="petal" cy="-20" rx="13" ry="21" transform="rotate(315)"/>
+        <circle class="center" r="14"/>
+      </g>
+    </g>
+
+    <g transform="translate(258 106)">
+      <g>
+        <ellipse class="petal" cy="-18" rx="12" ry="19"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(45)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(90)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(135)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(180)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(225)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(270)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(315)"/>
+        <circle class="center" r="13"/>
+      </g>
+    </g>
+
+    <g transform="translate(125 151) scale(.85)">
+      <g>
+        <ellipse class="petal" cy="-18" rx="12" ry="19"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(45)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(90)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(135)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(180)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(225)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(270)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(315)"/>
+        <circle class="center" r="13"/>
+      </g>
+    </g>
+
+    <g transform="translate(220 150) scale(.85)">
+      <g>
+        <ellipse class="petal" cy="-18" rx="12" ry="19"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(45)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(90)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(135)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(180)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(225)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(270)"/>
+        <ellipse class="petal" cy="-18" rx="12" ry="19" transform="rotate(315)"/>
+        <circle class="center" r="13"/>
+      </g>
+    </g>
+
+    <!-- Envoltura del ramo -->
+    <path class="wrap" d="M92 174 L170 286 L248 174
+      Q170 207 92 174Z"/>
+
+    <path class="ribbon" d="M145 231
+      Q122 211 116 235 Q119 251 155 244
+      Q170 262 185 244 Q221 251 224 235
+      Q218 211 195 231 L170 246Z"/>
+
+    <circle cx="170" cy="240" r="10" fill="#d78ba8"/>
+
+  </svg>
+
+  <!-- MENSAJE ROMÁNTICO -->
+  <div class="message">
+    <p>
+      Mi querida <strong>Amanda</strong>,<br><br>
+
+      Si pudiera regalarte una flor por cada vez
+      que me haces sonreír, necesitaría un jardín
+      entero para demostrarte lo especial que eres
+      para mí.<br><br>
+
+      Gracias por formar parte de mi vida,
+      por cada momento compartido y por todas
+      las sonrisas que todavía nos quedan por vivir.
+      <br><br>
+
+      Espero que este pequeño ramo te recuerde
+      lo mucho que te quiero y lo feliz que me hace
+      tenerte a mi lado.
+    </p>
+  </div>
+
+  <div class="heart">♥</div>
+
+  <!-- SELECTOR DE COLORES -->
+  <section class="color-box">
+    <p>🌷 Elige el color de tus flores</p>
+
+    <div class="colors">
+      <button class="color-btn active"
+        style="background:#ff6fae"
+        data-color="#ff6fae"
+        aria-label="Rosa"></button>
+
+      <button class="color-btn"
+        style="background:#e53945"
+        data-color="#e53945"
+        aria-label="Rojo"></button>
+
+      <button class="color-btn"
+        style="background:#a879dc"
+        data-color="#a879dc"
+        aria-label="Violeta"></button>
+
+      <button class="color-btn"
+        style="background:#65a9e8"
+        data-color="#65a9e8"
+        aria-label="Azul"></button>
+
+      <button class="color-btn"
+        style="background:#ffb52e"
+        data-color="#ffb52e"
+        aria-label="Amarillo"></button>
+
+      <button class="color-btn"
+        style="background:#ffffff"
+        data-color="#ffffff"
+        aria-label="Blanco"></button>
+    </div>
+
+    <label class="custom-color">
+      O crea tu propio color
+      <input type="color" id="customColor" value="#ff6fae"
+        aria-label="Elegir color personalizado">
+    </label>
+  </section>
+
+  <p class="signature">
+    Con todo mi cariño, para ti.
+    <span>Ruber ❤️</span>
+  </p>
+
+  <div class="footer">HECHO CON AMOR · PARA AMANDA</div>
+
+</main>
+
+<script>
+const root = document.documentElement;
+const buttons = document.querySelectorAll(".color-btn");
+const customColor = document.getElementById("customColor");
+
+function changeColor(color) {
+  root.style.setProperty("--flower-color", color);
+  customColor.value = color;
+
+  buttons.forEach(button => {
+    const active = button.dataset.color === color;
+    button.classList.toggle("active", active);
+  });
+}
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    changeColor(button.dataset.color);
+  });
+});
+
+customColor.addEventListener("input", event => {
+  changeColor(event.target.value);
+});
+
+// Pequeños corazones decorativos flotantes
+const symbols = ["♥", "♡", "✿"];
+
+function createParticle() {
+  const particle = document.createElement("span");
+  particle.className = "particle";
+  particle.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  particle.style.left = Math.random() * 100 + "vw";
+  particle.style.fontSize = (12 + Math.random() * 13) + "px";
+  particle.style.color = ["#e99ab8", "#d8a7df", "#f3b7ca"][
+    Math.floor(Math.random() * 3)
+  ];
+
+  const duration = 7 + Math.random() * 6;
+  particle.style.animationDuration = duration + "s";
+
+  document.body.appendChild(particle);
+
+  setTimeout(() => particle.remove(), duration * 1000);
+}
+
+setInterval(createParticle, 900);
+</script>
+
+</body>
+</html>
